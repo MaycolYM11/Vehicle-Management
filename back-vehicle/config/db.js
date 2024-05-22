@@ -1,7 +1,7 @@
 
 const mongoose = require('mongoose');
 
-const url = 'mongodb://localhost/Vehicl_management';
+const url = 'mongodb://localhost/Parqueadero';
 
 const connectDB = async () => {
     try {

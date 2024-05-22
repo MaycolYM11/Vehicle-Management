@@ -17,6 +17,12 @@ const propietariosSchema = mongoose.Schema({
     vehiculos: [vehiculoSchema]
 });
 
-const PropietariosModel = mongoose.model('Propietarios', propietariosSchema);
+const PropietariosModel = mongoose.model('vehiculos', propietariosSchema);
 
 module.exports = PropietariosModel;
+
+// module.exports = {
+//     PropietariosModel,
+//     vehiculoSchema
+// }
+

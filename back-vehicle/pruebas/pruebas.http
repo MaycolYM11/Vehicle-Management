@@ -1,3 +1,29 @@
 ###
 
 GET http://localhost:3001/propietarios/mostrarpropietarios HTTP/1.1
+
+###
+POST http://localhost:3001/propietarios/crearpropietario HTTP/1.1
+Content-Type: application/json
+
+{
+    "nombre": "Probando",
+    "apellido": "endpoint",
+    "documento": 2226669,
+    "telefono": 3102524848,
+    "direccion": "direccion prueba",
+    "vehiculos": [
+        {
+            "modelo": "Honda Civic",
+            "color": "Blanco",
+            "matricula": "KSI658",
+            "anio": "1998"
+        },
+        {
+            "modelo": "Nissan S15",
+            "color": "Amarelo",
+            "matricula": "KSI655",
+            "anio": "2012"
+        }
+        ]
+}
