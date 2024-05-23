@@ -2,10 +2,10 @@
 const mongoose = require('mongoose');
 
 const vehiculoSchema = mongoose.Schema({
+    año: Number,
     modelo: String,
     color: String,
-    matricula: String,
-    anio: Number
+    matricula: String
 });
 
 const propietariosSchema = mongoose.Schema({

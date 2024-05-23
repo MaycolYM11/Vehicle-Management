@@ -17,13 +17,13 @@ Content-Type: application/json
             "modelo": "Honda Civic",
             "color": "Blanco",
             "matricula": "KSI658",
-            "anio": "1998"
+            "año": "1998"
         },
         {
             "modelo": "Nissan S15",
             "color": "Amarelo",
             "matricula": "KSI655",
-            "anio": "2012"
+            "año": "2012"
         }
         ]
 }
