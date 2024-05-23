@@ -53,21 +53,21 @@ const Home = () => {
             <div>
                <h3>Vehiculos</h3>
               {selectedPropietario.vehiculos.map((vehiculo, index) => (               
-                <table key={index}>
-                  <thead>
-                    <tr>
-                      <th>Año</th>
-                      <th>Modelo</th>
-                      <th>Color</th>
-                      <th>Matrícula</th>
+                <table className="table__Vehiculos" key={index}>
+                  <thead className="thead__Vehiculos">
+                    <tr className="tr__Vehiculos_tittle">
+                      <th className="th__Vehiculos_año">Año</th>
+                      <th className="th__Vehiculos_modelo">Modelo</th>
+                      <th className="th__Vehiculos_color">Color</th>
+                      <th className="th__Vehiculos_matricula">Matrícula</th>
                     </tr>
                   </thead>
-                  <tbody>
-                    <tr>
-                      <td>{vehiculo.año}</td>
-                      <td>{vehiculo.modelo}</td>
-                      <td>{vehiculo.color}</td>
-                      <td>{vehiculo.matricula}</td>
+                  <tbody className="tbody__Vehiculos">
+                    <tr className="tr__Vehiculos">
+                      <td className="td__Vehiculos_año">{vehiculo.año}</td>
+                      <td className="td__Vehiculos_modelo">{vehiculo.modelo}</td>
+                      <td className="td__Vehiculos_color">{vehiculo.color}</td>
+                      <td className="td__Vehiculos_matricula">{vehiculo.matricula}</td>
                     </tr>
                   </tbody>
                 </table>
