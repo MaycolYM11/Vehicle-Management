@@ -12,6 +12,10 @@
   }*/
 
 .contenedorMain {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
   background-color: #03071e;
   opacity: 0.8;
   background: radial-gradient(
@@ -39,17 +43,36 @@
   margin: 0;
   padding: 0;
   color: #b1a7a6;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
-
+.title{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 30px;
+    padding-right: 30px;
+    width: 90vw;
+}
+.title h1{
+    font-size: 50px;
+}
 .contenedorDatos {
   display: flex;
   flex-direction: row;
+  width: 95%;
+  height: 80vh;
+  margin: 30px;
+  border-radius: 2px;
+  -webkit-box-shadow: 10px 10px 33px 20px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px 10px 33px 20px rgba(0, 0, 0, 0.75);
+  box-shadow: 10px 10px 33px 20px rgba(0, 0, 0, 0.75);
 }
 .izquierdaContenedor {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
   width: 70%;
 }
@@ -57,7 +80,7 @@
   width: 30%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
 }
 /*Tabla*/
@@ -70,8 +93,8 @@
   border-radius: 15px;
   overflow-x: auto;
 }
-.table__Vehiculos{
-    margin-top: 20px;
+.table__Vehiculos {
+  margin-top: 20px;
 }
 .thead__Propietarios,
 .thead__Vehiculos {
@@ -80,8 +103,8 @@
 
 .tr__Propietarios_tittle,
 .tr__Vehiculos_tittle {
-    color: #370617;
-  }
+  color: #370617;
+}
 
 .th__Propietarios_nombre,
 .td__Propietarios_nombre {
@@ -127,29 +150,36 @@
   text-align: center;
   font-size: 20px;
 }
-.th__Vehiculos_año,
-.td__Vehiculos_año{
-    width: 50px;
+.th__Propietarios_acciones,
+.td__Propietarios_acciones{
+    width: 80px;
     text-align: center;
-    font-size: 18px;
+    font-size: 20px;
+}
+
+.th__Vehiculos_año,
+.td__Vehiculos_año {
+  width: 50px;
+  text-align: center;
+  font-size: 18px;
 }
 .th__Vehiculos_modelo,
-.td__Vehiculos_modelo{
-    width: 80px;
-    text-align: center;
-    font-size: 18px;
+.td__Vehiculos_modelo {
+  width: 80px;
+  text-align: center;
+  font-size: 18px;
 }
 .th__Vehiculos_color,
-.td__Vehiculos_color{
-    width: 80px;
-    text-align: center;
-    font-size: 18px;
+.td__Vehiculos_color {
+  width: 80px;
+  text-align: center;
+  font-size: 18px;
 }
 .th__Vehiculos_matricula,
-.td__Vehiculos_matricula{
-    width: 80px;
-    text-align: center;
-    font-size: 18px;
+.td__Vehiculos_matricula {
+  width: 80px;
+  text-align: center;
+  font-size: 18px;
 }
 
 .tr__Propietarios:nth-child(even) {
@@ -157,5 +187,49 @@
 }
 
 .tr__Propietarios:hover {
-  opacity: 30%;
+    background-color: #ff0000;
+}
+/*Botones*/
+
+.btn-agregar{
+    background: #ffba08;
+    border: none;
+    border-radius: 3px;
+    box-shadow: 2px 2px 3px 3px rgba(0, 0, 0, 0.75);
+    width: 30px;
+    height: 30px;
+    margin: 3px;
+  }
+
+.btn-agregar:hover{
+    background: #e85d04;
+}
+
+.btn-borrar{
+    background: #ffba08;
+    border: none;
+    border-radius: 3px;
+    box-shadow: 2px 2px 3px 3px rgba(0, 0, 0, 0.75);
+    width: 30px;
+    height: 30px;
+    margin: 3px;
+}
+
+.btn-borrar:hover{
+    background: #e85d04;
+}
+
+.btn-propietario{
+    background: #ffba08;
+    border: none;
+    border-radius: 3px;
+    box-shadow: 2px 2px 3px 3px rgba(0, 0, 0, 0.75);
+    margin: 3px;
+    width: 90px;
+    height: 30px;
+    font-weight: bolder;
+}
+
+.btn-propietario:hover{
+    background: #e85d04;
 }

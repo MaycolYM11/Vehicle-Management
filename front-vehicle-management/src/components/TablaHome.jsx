@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCar } from "@fortawesome/free-solid-svg-icons";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import "./Style.css";
 
 const Home = () => {
@@ -17,10 +20,16 @@ const Home = () => {
 
   return (
     <div className="contenedorMain">
-      <h1>Tabla de Propietarios</h1>
+      <div className="title">
+        <h1>Tabla de Propietarios</h1>
+        <div className="contenedor-btn">
+          <button className="btn-propietario">+ Agregar</button>
+        </div>
+      </div>
+
       <div className="contenedorDatos">
         <div className="izquierdaContenedor">
-            <h2>Propietarios</h2>
+          <h2>Propietarios</h2>
           <table className="table__Propietarios">
             <thead className="thead__Propietarios">
               <tr className="tr__Propietarios_tittle">
@@ -30,18 +39,40 @@ const Home = () => {
                 <th className="th__Propietarios_Telefono">Teléfono</th>
                 <th className="th__Propietarios_Direccion">Dirección</th>
                 <th className="th__Propietarios_vehiculos">Vehículos</th>
+                <th className="th__Propietarios_acciones">Aciones</th>
               </tr>
             </thead>
             <tbody className="tbody__Propietarios">
               {propietarios.map((propietario) => (
                 <tr className="tr__Propietarios" key={propietario._id}>
-                  <td className="td__Propietarios_nombre">{propietario.nombre}</td>
-                  <td className="td__Propietarios_apellido">{propietario.apellido}</td>
-                  <td className="td__Propietarios_Documento">{propietario.documento}</td>
-                  <td className="td__Propietarios_Telefono">{propietario.telefono}</td>
-                  <td className="td__Propietarios_Direccion">{propietario.direccion}</td>
-                  <td className="td__Propietarios_vehiculos" onClick={() => handlePropietarioClick(propietario)}>
+                  <td className="td__Propietarios_nombre">
+                    {propietario.nombre}
+                  </td>
+                  <td className="td__Propietarios_apellido">
+                    {propietario.apellido}
+                  </td>
+                  <td className="td__Propietarios_Documento">
+                    {propietario.documento}
+                  </td>
+                  <td className="td__Propietarios_Telefono">
+                    {propietario.telefono}
+                  </td>
+                  <td className="td__Propietarios_Direccion">
+                    {propietario.direccion}
+                  </td>
+                  <td
+                    className="td__Propietarios_vehiculos"
+                    onClick={() => handlePropietarioClick(propietario)}
+                  >
                     {propietario.vehiculos.length}
+                  </td>
+                  <td className="td__Propietarios_acciones">
+                    <button className="btn-borrar">
+                      <FontAwesomeIcon icon={faTrash} size="lg" />
+                    </button>
+                    <button className="btn-agregar">
+                      <FontAwesomeIcon icon={faCar} size="lg" />
+                    </button>
                   </td>
                 </tr>
               ))}
@@ -51,8 +82,8 @@ const Home = () => {
         <div className="derechaContenedor">
           {selectedPropietario && (
             <div>
-               <h3>Vehiculos</h3>
-              {selectedPropietario.vehiculos.map((vehiculo, index) => (               
+              <h3>Vehiculos</h3>
+              {selectedPropietario.vehiculos.map((vehiculo, index) => (
                 <table className="table__Vehiculos" key={index}>
                   <thead className="thead__Vehiculos">
                     <tr className="tr__Vehiculos_tittle">
@@ -65,9 +96,13 @@ const Home = () => {
                   <tbody className="tbody__Vehiculos">
                     <tr className="tr__Vehiculos">
                       <td className="td__Vehiculos_año">{vehiculo.año}</td>
-                      <td className="td__Vehiculos_modelo">{vehiculo.modelo}</td>
+                      <td className="td__Vehiculos_modelo">
+                        {vehiculo.modelo}
+                      </td>
                       <td className="td__Vehiculos_color">{vehiculo.color}</td>
-                      <td className="td__Vehiculos_matricula">{vehiculo.matricula}</td>
+                      <td className="td__Vehiculos_matricula">
+                        {vehiculo.matricula}
+                      </td>
                     </tr>
                   </tbody>
                 </table>
