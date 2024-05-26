@@ -7,23 +7,17 @@ POST http://localhost:3001/propietarios/crearpropietario HTTP/1.1
 Content-Type: application/json
 
 {
-    "nombre": "Probando",
+    "nombre": "Tercereando",
     "apellido": "endpoint",
-    "documento": 2226669,
+    "documento": 12369874,
     "telefono": 3102524848,
     "direccion": "direccion prueba",
     "vehiculos": [
         {
-            "modelo": "Honda Civic",
+            "año": "1998",
+            "modelo": "Honda integra",
             "color": "Blanco",
-            "matricula": "KSI658",
-            "año": "1998"
-        },
-        {
-            "modelo": "Nissan S15",
-            "color": "Amarelo",
-            "matricula": "KSI655",
-            "año": "2012"
+            "matricula": "KSI858"
         }
         ]
 }

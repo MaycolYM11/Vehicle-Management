@@ -29,10 +29,10 @@ const crear = async (req, res) => {
         });
 
         const resultado = await propietario.save();
-        res.json(resultado);
+        res.json({resultado,pass:true});
         console.log(resultado);
     } catch (error) {
-        res.status(500).json({ message: error.message });
+        res.status(500).json({ message: error.message , pass:false});
         console.error(error);
     }
 };
