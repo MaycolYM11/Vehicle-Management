@@ -37,7 +37,25 @@ const crear = async (req, res) => {
     }
 };
 
+const eliminarPropietario = async (req, res) => {
+    try {
+      const { documento } = req.params;
+  
+      const resultado = await PropietariosModel.deleteOne({ documento: documento });
+  
+      if (resultado.deletedCount === 0) {
+        return res.status(404).json({ message: 'Propietario no encontrado' });
+      }
+  
+      res.json({ message: 'Propietario eliminado exitosamente' });
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+      console.error(error);
+    }
+  };
+
 module.exports = {
     mostrar,
-    crear
+    crear,
+    eliminarPropietario
 };

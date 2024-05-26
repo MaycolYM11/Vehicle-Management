@@ -1,20 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCar } from "@fortawesome/free-solid-svg-icons";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import Formulario from "./Formulario";
+import { useGetPropietarios, eliminarPropietario } from "./utils";
 import "./Style.css";
 
 const Home = () => {
-  const [propietarios, setPropietarios] = useState([]);
+  const [propietarios, fetchPropietarios] = useGetPropietarios();
   const [selectedPropietario, setSelectedPropietario] = useState(null);
   const [registerform, setRegisterform] = useState(false);
 
-  useEffect(() => {
-    fetch("http://localhost:3001/propietarios/mostrarpropietarios") // Reemplaza la URL con la del endpoint de tu servidor
-      .then((response) => response.json())
-      .then((data) => setPropietarios(data));
-  }, []);
 
   const handlePropietarioClick = (propietario) => {
     setSelectedPropietario(propietario);
@@ -22,16 +18,29 @@ const Home = () => {
 
   const handleRegisterFormClose = () => {
     setRegisterform(false);
-  }
+  };
+
+  const handleEliminarPropietario = (documento) => {
+    eliminarPropietario(documento, fetchPropietarios);
+  };
 
   return (
     <div className="contenedorMain">
       <div className="title">
         <h1>Tabla de Propietarios</h1>
         <div className="contenedor-btn">
-          <button className="btn-propietario" onClick={() => setRegisterform(true)}>+ Agregar</button>
+          <button
+            className="btn-propietario"
+            onClick={() => setRegisterform(true)}
+          >
+            + Agregar
+          </button>
         </div>
-        <Formulario isOpen={registerform} closeModal={handleRegisterFormClose} />
+        <Formulario
+          isOpen={registerform}
+          closeModal={handleRegisterFormClose}
+          fetchPropietarios={fetchPropietarios}
+        />
       </div>
 
       <div className="contenedorDatos">
@@ -67,16 +76,21 @@ const Home = () => {
                   <td className="td__Propietarios_Direccion">
                     {propietario.direccion}
                   </td>
-                  <td
-                    className="td__Propietarios_vehiculos"
-                  >
+                  <td className="td__Propietarios_vehiculos">
                     {propietario.vehiculos.length}
                   </td>
                   <td className="td__Propietarios_acciones">
-                    <button className="btn-borrar">
+                    <button
+                      className="btn-borrar"
+                      onClick={() => handleEliminarPropietario(propietario.documento)}
+                    >
                       <FontAwesomeIcon icon={faTrash} size="lg" />
                     </button>
-                    <button type="button" className="btn-agregar" onClick={() => handlePropietarioClick(propietario)}>
+                    <button
+                      type="button"
+                      className="btn-agregar"
+                      onClick={() => handlePropietarioClick(propietario)}
+                    >
                       <FontAwesomeIcon icon={faCar} size="lg" />
                     </button>
                   </td>

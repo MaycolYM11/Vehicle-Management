@@ -64,7 +64,7 @@
   width: 95%;
   height: 80vh;
   margin: 30px;
-  border-radius: 2px;
+  border-radius: 20px;
   -webkit-box-shadow: 10px 10px 33px 20px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 10px 10px 33px 20px rgba(0, 0, 0, 0.75);
   box-shadow: 10px 10px 33px 20px rgba(0, 0, 0, 0.75);
@@ -78,6 +78,8 @@
 }
 .derechaContenedor {
   width: 30%;
+  max-height: 80vh;
+  overflow-y: auto; 
   display: flex;
   flex-direction: column;
   justify-content: start;
@@ -328,4 +330,23 @@ body {
 /* Desactivar scroll del fondo cuando el modal está abierto */
 body.modal-open {
     overflow: hidden;
+}
+
+/*Overflow*/
+.modal::-webkit-scrollbar,
+.derechaContenedor::-webkit-scrollbar {
+  width: 8px;
+}
+.modal::-webkit-scrollbar-track,
+.derechaContenedor::-webkit-scrollbar-track {
+  background-color: #0b104e;
+}
+.modal::-webkit-scrollbar-thumb,
+.derechaContenedor::-webkit-scrollbar-thumb {
+  background-color: #040511; 
+  border-radius: 4px;
+}
+.modal::-webkit-scrollbar-thumb:hover,
+.derechaContenedor::-webkit-scrollbar-thumb:hover {
+  background-color: #070a31;
 }
