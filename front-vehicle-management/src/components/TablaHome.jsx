@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCar } from "@fortawesome/free-solid-svg-icons";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import Formulario from "./Formulario";
 import "./Style.css";
 
 const Home = () => {
   const [propietarios, setPropietarios] = useState([]);
   const [selectedPropietario, setSelectedPropietario] = useState(null);
+  const [registerform, setRegisterform] = useState(false);
 
   useEffect(() => {
     fetch("http://localhost:3001/propietarios/mostrarpropietarios") // Reemplaza la URL con la del endpoint de tu servidor
@@ -18,13 +20,18 @@ const Home = () => {
     setSelectedPropietario(propietario);
   };
 
+  const handleRegisterFormClose = () => {
+    setRegisterform(false);
+  }
+
   return (
     <div className="contenedorMain">
       <div className="title">
         <h1>Tabla de Propietarios</h1>
         <div className="contenedor-btn">
-          <button className="btn-propietario">+ Agregar</button>
+          <button className="btn-propietario" onClick={() => setRegisterform(true)}>+ Agregar</button>
         </div>
+        <Formulario isOpen={registerform} closeModal={handleRegisterFormClose} />
       </div>
 
       <div className="contenedorDatos">
@@ -62,7 +69,6 @@ const Home = () => {
                   </td>
                   <td
                     className="td__Propietarios_vehiculos"
-                    onClick={() => handlePropietarioClick(propietario)}
                   >
                     {propietario.vehiculos.length}
                   </td>
@@ -70,7 +76,7 @@ const Home = () => {
                     <button className="btn-borrar">
                       <FontAwesomeIcon icon={faTrash} size="lg" />
                     </button>
-                    <button className="btn-agregar">
+                    <button type="button" className="btn-agregar" onClick={() => handlePropietarioClick(propietario)}>
                       <FontAwesomeIcon icon={faCar} size="lg" />
                     </button>
                   </td>

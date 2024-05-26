@@ -8,7 +8,12 @@ const port = 3001;
 
 connectDB();
 
-app.use(cors()); // Añade el middleware de CORS
+const optionsCors = {
+    origin: `http://localhost:3000`,
+    methods: 'GET, POST, PUT, DELETE',
+    optionsSuccessStatus: 200,  
+};
+app.use(cors(optionsCors));
 
 app.use(express.json());
 
