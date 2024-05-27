@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { PDFDownloadLink, PDFViewer } from "@react-pdf/renderer";
 import { faCar } from "@fortawesome/free-solid-svg-icons";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faFilePdf } from '@fortawesome/free-solid-svg-icons';
+import Listado from "../components/pdf/Listado";
 import Formulario from "./Formulario";
 import { useGetPropietarios, eliminarPropietario } from "./utils";
 import "./Style.css";
@@ -10,7 +13,6 @@ const Home = () => {
   const [propietarios, fetchPropietarios] = useGetPropietarios();
   const [selectedPropietario, setSelectedPropietario] = useState(null);
   const [registerform, setRegisterform] = useState(false);
-
 
   const handlePropietarioClick = (propietario) => {
     setSelectedPropietario(propietario);
@@ -29,6 +31,20 @@ const Home = () => {
       <div className="title">
         <h1>Tabla de Propietarios</h1>
         <div className="contenedor-btn">
+          <div>
+            <PDFDownloadLink
+              document={<Listado />}
+              fileName="Listado_Propietario.pdf"
+            >
+              {({ loading, url, error, blob }) =>
+                loading ? (
+                  <button className="btn-descargar">Descargando</button>
+                ) : (
+                  <button className="btn-descargar"><FontAwesomeIcon icon={faFilePdf} /></button>
+                )
+              }
+            </PDFDownloadLink>
+          </div>
           <button
             className="btn-propietario"
             onClick={() => setRegisterform(true)}
@@ -82,7 +98,9 @@ const Home = () => {
                   <td className="td__Propietarios_acciones">
                     <button
                       className="btn-borrar"
-                      onClick={() => handleEliminarPropietario(propietario.documento)}
+                      onClick={() =>
+                        handleEliminarPropietario(propietario.documento)
+                      }
                     >
                       <FontAwesomeIcon icon={faTrash} size="lg" />
                     </button>
@@ -131,6 +149,10 @@ const Home = () => {
           )}
         </div>
       </div>
+      {/* 
+    <PDFViewer style={{ width: '100vw', height: '100vh' }}>
+      <Listado />
+    </PDFViewer>*/}
     </div>
   );
 };
